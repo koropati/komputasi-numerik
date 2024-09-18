@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 class Cholesky:
     def __init__(self, A):
@@ -44,3 +45,24 @@ class Cholesky:
         x = np.linalg.solve(L.T, y)
         
         return x
+
+    def plot_matrix(self):
+        """
+        Menampilkan grafik matriks A dan matriks segitiga bawah L
+        """
+        fig, axs = plt.subplots(1, 2, figsize=(10, 5))
+
+        # Plot matriks A
+        axs[0].imshow(self.A, cmap='viridis', interpolation='none')
+        axs[0].set_title('Matriks A')
+        axs[0].set_xlabel('Kolom')
+        axs[0].set_ylabel('Baris')
+        
+        # Plot matriks L (dekomposisi Cholesky)
+        axs[1].imshow(self.L, cmap='viridis', interpolation='none')
+        axs[1].set_title('Matriks Segitiga Bawah L')
+        axs[1].set_xlabel('Kolom')
+        axs[1].set_ylabel('Baris')
+
+        plt.tight_layout()
+        plt.show()
